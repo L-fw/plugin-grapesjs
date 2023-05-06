@@ -6,11 +6,17 @@ export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) 
 
     if (opts.updateStyleManager) {
         const styleManagerSectors = [{
-            name: 'Dimension',
+            name: '平面属性',
             open: false,
             buildProps: ['width', 'height', 'max-width', 'min-height', 'margin', 'padding'],
-            properties:[{
+            properties:[
+              { name: '宽', property: 'width'},
+              { name: '高', property: 'height'},
+              { name: '最大宽度', property: 'max-width'},
+              { name: '最小高度', property: 'min-height'},
+              {
               property: 'margin',
+              name: '外边距',
               properties:[
                 { name: 'Top', property: 'margin-top'},
                 { name: 'Left', property: 'margin-left'},
@@ -19,6 +25,7 @@ export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) 
               ],
             },{
               property  : 'padding',
+              name: '内边距',
               properties:[
                 { name: 'Top', property: 'padding-top'},
                 { name: 'Right', property: 'padding-right'},
@@ -27,15 +34,19 @@ export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) 
               ],
             }],
           },{
-            name: 'Typography',
+            name: '文字样式',
             open: false,
             buildProps: ['font-family', 'font-size', 'font-weight', 'letter-spacing', 'color', 'line-height', 'text-align', 'text-decoration', 'font-style', 'vertical-align', 'text-shadow'],
             properties:[
-              { name: 'Font', property: 'font-family'},
-              { name: 'Weight', property: 'font-weight'},
-              { name: 'Font color', property: 'color'},
+              { property: 'font-family', name: '字体'},
+              { name: '粗细', property: 'font-weight'},
+              { name: '颜色', property: 'color'},
+              { name: '大小', property: 'font-size'},
+              { name: '字间距', property: 'letter-spacing'},
+              { name: '行间距', property: 'line-height'},
               {
                 property: 'text-align',
+                name: '水平对齐',
                 type: 'radio',
                 defaults: 'left',
                 list: [
@@ -46,6 +57,7 @@ export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) 
                 ],
               },{
                 property: 'text-decoration',
+                name: '文本装饰',
                 type: 'radio',
                 defaults: 'none',
                 list: [
@@ -55,6 +67,7 @@ export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) 
                 ],
               },{
                 property: 'font-style',
+                name: '字体',
                 type: 'radio',
                 defaults: 'normal',
                 list: [
@@ -63,32 +76,35 @@ export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) 
                 ],
               },{
                 property: 'vertical-align',
+                name: '垂直对齐',
                 type: 'select',
                 defaults: 'baseline',
                 list: [
-                  { value: 'baseline'},
-                  { value: 'top'},
-                  { value: 'middle'},
-                  { value: 'bottom'}
+                  { value: 'baseline',name:'线对齐'},
+                  { value: 'top',name:'顶部对齐'},
+                  { value: 'middle',name:'中部对齐'},
+                  { value: 'bottom',name:'底部对齐'}
                 ],
               },{
                 property: 'text-shadow',
+                name: '文本阴影',
                 properties: [
-                  { name: 'X position', property: 'text-shadow-h'},
-                  { name: 'Y position', property: 'text-shadow-v'},
-                  { name: 'Blur', property: 'text-shadow-blur'},
-                  { name: 'Color', property: 'text-shadow-color'}
+                  { name: 'X方向', property: 'text-shadow-h'},
+                  { name: 'Y方向', property: 'text-shadow-v'},
+                  { name: '模糊', property: 'text-shadow-blur'},
+                  { name: '颜色', property: 'text-shadow-color'}
                 ],
             }],
           },{
-            name: 'Decorations',
+            name: '整体样式',
             open: false,
             buildProps: ['background-color', 'border-collapse', 'border-radius', 'border', 'background'],
             properties: [{
               property: 'background-color',
-              name: 'Background',
+              name: '背景颜色',
             },{
               property: 'border-radius',
+              name: '边框圆角',
               properties  : [
                 { name: 'Top', property: 'border-top-left-radius'},
                 { name: 'Right', property: 'border-top-right-radius'},
@@ -97,22 +113,25 @@ export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) 
               ],
             },{
               property: 'border-collapse',
+              name: '边框合并',
               type: 'radio',
               defaults: 'separate',
               list: [
-                { value: 'separate', name: 'No'},
-                { value: 'collapse', name: 'Yes'}
+                { value: 'separate', name: '否'},
+                { value: 'collapse', name: '是'}
               ],
             },
             {
               property: 'border',
+              name: '边框线',
               properties: [
                 { name: 'Width', property: 'border-width', defaults: '0'},
                 { name: 'Style', property: 'border-style'},
                 { name: 'Color', property: 'border-color'},
               ],
             },{
-              property: 'background',
+              property: 'background', 
+              name: '背景图片',
               properties: [
                 { name: 'Image', property: 'background-image'},
                 { name: 'Repeat', property:   'background-repeat'},
