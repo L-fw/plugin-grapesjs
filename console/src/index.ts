@@ -2,6 +2,8 @@ import { definePlugin } from "@halo-dev/console-shared";
 import HomeView from "./views/HomeView.vue";
 import { IconPlug } from "@halo-dev/components";
 import { markRaw } from "vue";
+import GrapesJS from "grapesjs";
+import GrapesEdit from "./views/HomeView.vue";
 
 export default definePlugin({
   components: {},
@@ -30,5 +32,16 @@ export default definePlugin({
       },
     },
   ],
-  extensionPoints: {},
+  extensionPoints: {
+    "editor:create": () => {
+      return [
+        {
+          name: "grapesedit",
+          displayName: "GrapesEdit",
+          component: markRaw(GrapesEdit),
+          rawType: "markdown",
+        },
+      ];
+    },
+  },
 });

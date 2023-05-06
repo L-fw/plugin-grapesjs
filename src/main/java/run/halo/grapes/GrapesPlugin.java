@@ -1,9 +1,7 @@
-package run.halo.starter;
+package run.halo.grapes;
 
 import org.pf4j.PluginWrapper;
 import org.springframework.stereotype.Component;
-import run.halo.app.extension.Scheme;
-import run.halo.app.extension.SchemeManager;
 import run.halo.app.plugin.BasePlugin;
 
 /**
@@ -11,9 +9,9 @@ import run.halo.app.plugin.BasePlugin;
  * @since 2.0.0
  */
 @Component
-public class StarterPlugin extends BasePlugin {
+public class GrapesPlugin extends BasePlugin {
 
-    public StarterPlugin(PluginWrapper wrapper) {
+    public GrapesPlugin(PluginWrapper wrapper) {
         super(wrapper);
     }
 

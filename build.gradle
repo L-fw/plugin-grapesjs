@@ -4,7 +4,7 @@ plugins {
     id 'java'
 }
 
-group 'run.halo.starter'
+group 'run.halo.grapes'
 sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
