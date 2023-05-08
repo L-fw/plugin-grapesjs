@@ -2,6 +2,7 @@ import type grapesjs from 'grapesjs';
 import juice from 'juice';
 import { PluginOptions } from '.';
 
+let innerHtml:string;
 export default (editor: grapesjs.Editor, opts: Required<PluginOptions>) => {
   const cmdm = editor.Commands;
   const pfx = editor.getConfig().stylePrefix;
@@ -79,9 +80,12 @@ export default (editor: grapesjs.Editor, opts: Required<PluginOptions>) => {
 
       if (codeEditorHtml) {
         const tmpl = `${editor.getHtml()}<style>${editor.getCss()}</style>`;
+        console.log(juice(tmpl, opts.juiceOpts));
+        innerHtml = juice(tmpl, opts.juiceOpts);
         codeEditorHtml.setContent(opts.inlineCss ? juice(tmpl, opts.juiceOpts) : tmpl);
         codeEditorHtml.editor.refresh();
       }
     },
   })
 }
+export {innerHtml}

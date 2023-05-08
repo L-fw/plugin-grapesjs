@@ -88,7 +88,7 @@ export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) 
     media: `<svg viewBox="0 0 24 24">
         <path fill="currentColor" d="M20 20.5C20 21.3 19.3 22 18.5 22H13C12.6 22 12.3 21.9 12 21.6L8 17.4L8.7 16.6C8.9 16.4 9.2 16.3 9.5 16.3H9.7L12 18V9C12 8.4 12.4 8 13 8S14 8.4 14 9V13.5L15.2 13.6L19.1 15.8C19.6 16 20 16.6 20 17.1V20.5M20 2H4C2.9 2 2 2.9 2 4V12C2 13.1 2.9 14 4 14H8V12H4V4H20V12H18V14H20C21.1 14 22 13.1 22 12V4C22 2.9 21.1 2 20 2Z" />
     </svg>`,
-    content: '<a class="button">Button</a>',
+    content: '<a class="button">按钮</a>',
   });
 
   addBlock('divider', {
@@ -119,7 +119,7 @@ export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) 
     activate: true,
     content: {
       type: 'text',
-      content: 'Insert your text here',
+      content: '添加你的文字吧！',
       style: { padding: '10px' },
     },
   });
@@ -130,9 +130,11 @@ export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) 
         <path fill="currentColor" d="M20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20M4,6V18H20V6H4M6,9H18V11H6V9M6,13H16V15H6V13Z" />
     </svg>`,
     content: `
-      <h1 class="heading">Insert title here</h1>
+      <h1 class="heading">这里添加标题</h1>
       <p class="paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+        努力是不会背叛自己的，虽然梦想会背叛。 
+        努力不一定能实现梦想，但是曾经努力过的事实却足以安慰自己。
+         ——比企谷八幡
       </p>
     `,
   });
@@ -164,7 +166,7 @@ export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) 
     </svg>`,
     content: {
       type: 'link',
-      content: 'Link',
+      content: '链接',
       style: { color:'#3b97e3' }
     },
   });
@@ -195,8 +197,8 @@ export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) 
           <table class="grid-item-card-body">
             <tr>
               <td class="grid-item-card-content">
-                <h1 class="card-title">Title here</h1>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+                <h1 class="card-title">标题</h1>
+                <p class="card-text">这里添加段落！</p>
               </td>
             </tr>
           </table>
@@ -229,8 +231,8 @@ export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) 
                 <img class="list-item-image" src="https://via.placeholder.com/150/78c5d6/fff" alt="Image"/>
               </td>
               <td class="list-cell-right">
-                <h1 class="card-title">Title here</h1>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+                <h1 class="card-title">标题</h1>
+                <p class="card-text">这里添加段落</p>
               </td>
             </tr>
           </table>

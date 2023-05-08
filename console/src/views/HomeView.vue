@@ -1,7 +1,7 @@
 <template>
   <div>
+<!--    <button @click="test">test</button>-->
     <div id="gjs" style="height: 0px; overflow: hidden;">
-      Hello World
     </div>
   </div>
 </template>
@@ -17,14 +17,24 @@ html {
 <script>
 import 'grapesjs/dist/css/grapes.min.css';
 import grapesjs from 'grapesjs';
-import webpage from 'grapesjs-preset-webpage';
-import newsletter from 'grapesjs-preset-newsletter'
+// import webpage from 'grapesjs-preset-webpage';
+// import newsletter from 'grapesjs-preset-newsletter'
 import plugin from '../preset-newsletter/src/plugin'
+import zh from 'grapesjs/locale/zh'
+import {defineProps, watch} from "vue";
+// import {innerHtml} from '../preset-newsletter/src/openExportCommand'
 
+
+
+
+
+
+let editor;
 export default {
   name: 'GrapesComponent',
+  // opts: Required<PluginOptions>,
     mounted() {
-      let editor = grapesjs.init({
+       editor = grapesjs.init({
         showOffsets: 1,
         noticeOnUnload: 0,
         container: '#gjs',
@@ -34,6 +44,9 @@ export default {
         plugins: [plugin],
         pluginsOpts: {
           [plugin]: {}
+        },
+        i18n: {
+          messages: {zh}
         }
       });
 
@@ -43,5 +56,14 @@ export default {
         content: '<div style="text-align:center"><span>Hello World</span></div>',
       });
     },
+    methods:{
+      test() {
+        const data = editor.getHtml();
+        console.log(data);
+        const data2 = editor.getCss();
+        console.log(data2);
+        // console.log(innerHtml);
+      }
+    }
 };
 </script>

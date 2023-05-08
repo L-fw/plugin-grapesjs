@@ -18,7 +18,7 @@ export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) 
               property: 'margin',
               name: '外边距',
               properties:[
-                { name: 'Top', property: 'margin-top'},
+                {  property: 'margin-top', name: '上边距'},
                 { name: 'Left', property: 'margin-left'},
                 { name: 'Right', property: 'margin-right'},
                 { name: 'Bottom', property: 'margin-bottom'}
@@ -133,7 +133,7 @@ export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) 
               property: 'background', 
               name: '背景图片',
               properties: [
-                { name: 'Image', property: 'background-image'},
+                { name: '图片', property: 'background-image',label: '图片'},
                 { name: 'Repeat', property:   'background-repeat'},
                 { name: 'Position', property: 'background-position'},
                 { name: 'Attachment', property: 'background-attachment'},
@@ -141,7 +141,6 @@ export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) 
               ],
             }],
         }];
-
         editor.onReady(() => {
             sectors.reset();
             sectors.add(styleManagerSectors);

@@ -3,7 +3,7 @@ import HomeView from "./views/HomeView.vue";
 import { IconPlug } from "@halo-dev/components";
 import { markRaw } from "vue";
 import GrapesJS from "grapesjs";
-import GrapesEdit from "./views/HomeView.vue";
+import GrapesEdit from "./views/test.vue";
 
 export default definePlugin({
   components: {},

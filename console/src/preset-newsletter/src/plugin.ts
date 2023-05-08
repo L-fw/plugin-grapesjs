@@ -144,11 +144,11 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts: Partial<PluginOpti
     cmdOpenImport: 'gjs-open-import-template',
     cmdTglImages: 'gjs-toggle-images',
     cmdInlineHtml: 'gjs-get-inlined-html',
-    modalTitleImport: 'Import template',
-    modalTitleExport: 'Export template',
+    modalTitleImport: '导入模版',
+    modalTitleExport: '导出模板',
     modalLabelImport: '',
     modalLabelExport: '',
-    modalBtnImport: 'Import',
+    modalBtnImport: '导入',
     codeViewerTheme: 'hopscotch',
     importPlaceholder: '',
     inlineCss: true,
@@ -167,7 +167,7 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts: Partial<PluginOpti
     showStylesOnChange: true,
     showBlocksOnLoad: true,
     useCustomTheme: true,
-    textCleanCanvas: 'Are you sure you want to clear the canvas?',
+    textCleanCanvas: '你确定要清空整个画布吗？',
     ...opts,
   };
 
