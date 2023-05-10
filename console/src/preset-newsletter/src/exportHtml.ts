@@ -5,7 +5,7 @@ import { PluginOptions } from '.';
 let innerHtml;
 export default (editor: grapesjs.Editor, opts: Required<PluginOptions>) => {
   const tmpl = `${editor.getHtml()}<style>${editor.getCss()}</style>`;
-  console.log(juice(tmpl, opts.juiceOpts));
+  console.log("juice");
   innerHtml = juice(tmpl, opts.juiceOpts);
 }
 export {innerHtml}
