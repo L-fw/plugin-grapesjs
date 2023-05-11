@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "grapesjs": "^0.21.1",
+    "grapesjs-preset-newsletter": "^1.0.1",
+    "grapesjs-preset-webpage": "^1.0.2"
+  },
+  "devDependencies": {
+    "css-loader": "^6.7.3",
+    "style-loader": "^3.3.2"
+  }
+}
