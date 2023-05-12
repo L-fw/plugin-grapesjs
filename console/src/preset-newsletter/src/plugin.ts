@@ -1,9 +1,11 @@
 // @ts-ignore
 import juice from 'juice';
+import loadComponents from './components'
 import loadCommands from './commands';
 import loadBlocks from './blocks';
 import loadPanels from './panels';
 import loadStyles from './styles';
+import loadTraits from "./traits";
 import type grapesjs from 'grapesjs';
 
 export interface PluginOptions {
@@ -130,7 +132,7 @@ export interface PluginOptions {
    * @default true
    */
   useCustomTheme?: boolean;
-};
+}
 
 export type RequiredPluginOptions = Required<PluginOptions>;
 
@@ -138,7 +140,7 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts: Partial<PluginOpti
   let config = editor.getConfig();
 
   const options: RequiredPluginOptions = {
-    blocks: ['sect100', 'sect50', 'sect30', 'sect37', 'button', 'divider', 'text', 'text-sect', 'image', 'quote', 'link', 'link-block', 'grid-items', 'list-items'],
+    blocks: ['sect100', 'sect50', 'sect30', 'sect37', 'divider', 'text', 'text-sect', 'image', 'video', 'quote', 'link', 'link-block', 'grid-items', 'list-items','tool-tip', 'input-box', 'textarea', 'select', 'button', 'label', 'check-box', 'radio', 'map', 'tabs'],
     block: () => ({}),
     juiceOpts: {},
     cmdOpenImport: 'gjs-open-import-template',
@@ -206,9 +208,11 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts: Partial<PluginOpti
     document.head.appendChild(style);
   }
 
+  loadComponents(editor);
   loadCommands(editor, options);
   loadBlocks(editor, options);
   loadPanels(editor, options);
+  loadTraits(editor);
   loadStyles(editor, options);
 };
 

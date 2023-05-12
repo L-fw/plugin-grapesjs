@@ -1,5 +1,5 @@
 <template>
-    <div id="gjs" style="height: 0px; overflow: hidden;">
+    <div id="gjs" style="height: 0; overflow: hidden;">
     </div>
 </template>
 
@@ -15,9 +15,10 @@ html {
 import 'grapesjs/dist/css/grapes.min.css';
 import grapesjs from 'grapesjs';
 import plugin from '../preset-newsletter/src/plugin'
+// import webpack from "grapesjs-preset-webpage";
 import zh from 'grapesjs/locale/zh'
-import {defineProps, ref, watch} from "vue";
 import {innerHtml} from '@/preset-newsletter/src/exportHtml'
+
 
 let editor;
 export default {

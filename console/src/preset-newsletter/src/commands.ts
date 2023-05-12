@@ -1,11 +1,11 @@
 import type grapesjs from 'grapesjs';
 import openImportCommand from './openImportCommand';
-import openExportCommand, {innerHtml} from './openExportCommand';
+import openExportCommand from './openExportCommand';
 import tglImagesCommand from './toggleImagesCommand';
+// @ts-ignore
 import { PluginOptions } from '.';
 import { cmdClear, cmdDeviceDesktop, cmdDeviceMobile, cmdDeviceTablet } from './consts';
 import exportHtml from "./exportHtml";
-import {d} from "vitest/dist/index-40e0cb97";
 
 export default (editor: grapesjs.Editor, opts: Required<PluginOptions>) => {
     const { Commands } = editor;

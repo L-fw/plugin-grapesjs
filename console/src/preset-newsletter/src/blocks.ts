@@ -1,8 +1,9 @@
 import type grapesjs from 'grapesjs';
+// @ts-ignore
 import { PluginOptions } from '.';
 
 export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) {
-  const bm = editor.Blocks;
+  // const bm = editor.Blocks;
   let tableStyleStr = '';
   let cellStyleStr = '';
   let tableStyle = opts.tableStyle || {};
@@ -11,6 +12,25 @@ export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) 
   const addBlock = (id: string, blockDef: grapesjs.BlockOptions) => {
     opts.blocks.indexOf(id)! >= 0 && editor.Blocks.add(id, {
       select: true,
+      category: '基本组件',
+      ...blockDef,
+      ...opts.block(id),
+    });
+  }
+
+  const addFormBlock = (id: string, blockDef: grapesjs.BlockOptions) => {
+    opts.blocks.indexOf(id)! >= 0 && editor.Blocks.add(id, {
+      select: true,
+      category: '表单组件',
+      ...blockDef,
+      ...opts.block(id),
+    });
+  }
+
+  const addExtraBlock = (id: string, blockDef: grapesjs.BlockOptions) => {
+    opts.blocks.indexOf(id)! >= 0 && editor.Blocks.add(id, {
+      select: true,
+      category: '额外组件',
       ...blockDef,
       ...opts.block(id),
     });
@@ -83,14 +103,6 @@ export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) 
     `,
   });
 
-  addBlock('button', {
-    label: '按钮',
-    media: `<svg viewBox="0 0 24 24">
-        <path fill="currentColor" d="M20 20.5C20 21.3 19.3 22 18.5 22H13C12.6 22 12.3 21.9 12 21.6L8 17.4L8.7 16.6C8.9 16.4 9.2 16.3 9.5 16.3H9.7L12 18V9C12 8.4 12.4 8 13 8S14 8.4 14 9V13.5L15.2 13.6L19.1 15.8C19.6 16 20 16.6 20 17.1V20.5M20 2H4C2.9 2 2 2.9 2 4V12C2 13.1 2.9 14 4 14H8V12H4V4H20V12H18V14H20C21.1 14 22 13.1 22 12V4C22 2.9 21.1 2 20 2Z" />
-    </svg>`,
-    content: '<a class="button">按钮</a>',
-  });
-
   addBlock('divider', {
     label: '分隔器',
     media: `<svg viewBox="0 0 24 24">
@@ -149,6 +161,17 @@ export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) 
       type:'image',
       style: { color:'black' },
     },
+  });
+
+  addBlock('video', {
+    label: '视频',
+    media: `<svg viewBox="0 0 24 24">
+        <path fill="currentColor" d="M10,15L15.19,12L10,9V15M21.56,7.17C21.69,7.64 21.78,8.27 21.84,9.07C21.91,9.87 21.94,10.56 21.94,11.16L22,12C22,14.19 21.84,15.8 21.56,16.83C21.31,17.73 20.73,18.31 19.83,18.56C19.36,18.69 18.5,18.78 17.18,18.84C15.88,18.91 14.69,18.94 13.59,18.94L12,19C7.81,19 5.2,18.84 4.17,18.56C3.27,18.31 2.69,17.73 2.44,16.83C2.31,16.36 2.22,15.73 2.16,14.93C2.09,14.13 2.06,13.44 2.06,12.84L2,12C2,9.81 2.16,8.2 2.44,7.17C2.69,6.27 3.27,5.69 4.17,5.44C4.64,5.31 5.5,5.22 6.82,5.16C8.12,5.09 9.31,5.06 10.41,5.06L12,5C16.19,5 18.8,5.16 19.83,5.44C20.73,5.69 21.31,6.27 21.56,7.17Z"></path>
+      </svg>`,
+    activate: false,
+    content: `
+            <video  src="" controls="controls" style="box-sizing: border-box; width: 393px; height: 198px;">
+            </video>`,
   });
 
   addBlock('quote', {
@@ -247,4 +270,118 @@ export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) 
     </svg>`,
     content: listItem + listItem,
   });
+
+//   const formItem =`
+// <form data-gjs-highlightable="true" data-gjs-type="form" draggable="true" method="get" class="">
+//   <div data-gjs-highlightable="true" data-gjs-type="default" draggable="true" class="">
+//     <label data-gjs-highlightable="true" data-gjs-type="label" draggable="true" class="">用户名： </label>
+//     <input  data-gjs-type="input" draggable="true" type="text" autocomplete="off">
+//   </div>
+//   <div data-gjs-highlightable="true"  data-gjs-type="default" draggable="true" class="">
+//     <label data-gjs-highlightable="true"  data-gjs-type="label" draggable="true" class="">邮箱： </label>
+//     <input  data-gjs-type="input" draggable="true" type="email" autocomplete="off" class="">
+//   </div>
+//   <div data-gjs-highlightable="true"  data-gjs-type="default" draggable="true" class="">
+//     <label data-gjs-highlightable="true"  data-gjs-type="label" draggable="true" class="">性别： </label>
+//     <input  data-gjs-type="checkbox" draggable="true" type="checkbox" value="M" autocomplete="off" class="">
+//     <label data-gjs-highlightable="true"  data-gjs-type="label" draggable="true" class="">男：</label>
+//     <input  data-gjs-type="checkbox" draggable="true" type="checkbox" value="F" autocomplete="off">
+//     <label data-gjs-highlightable="true" data-gjs-type="label" draggable="true">女：</label>
+//   </div>
+//   <div data-gjs-highlightable="true"  data-gjs-type="default" draggable="true" class="">
+//     <label data-gjs-highlightable="true" data-gjs-type="label" draggable="true">文本框</label>
+//     <textarea data-gjs-type="textarea" draggable="true" autocomplete="off" class=""></textarea>
+//   </div>
+//   <div data-gjs-highlightable="true"  data-gjs-type="default" draggable="true" class="">
+//     <button  data-gjs-type="button" draggable="true" type="button" autocomplete="off"> 提交 </button>
+//   </div>
+// </form>
+// `;
+
+  // addFormBlock('form', {
+  //   label: '表单',
+  //   media: `<svg viewBox="0 0 24 24">
+  //               <path d="M22 5.5c0-.3-.5-.5-1.3-.5H3.4c-.8 0-1.3.2-1.3.5v3c0 .3.5.5 1.3.5h17.4c.8 0 1.3-.2 1.3-.5v-3zM21 8H3V6h18v2zM22 10.5c0-.3-.5-.5-1.3-.5H3.4c-.8 0-1.3.2-1.3.5v3c0 .3.5.5 1.3.5h17.4c.8 0 1.3-.2 1.3-.5v-3zM21 13H3v-2h18v2z" />
+  //               <rect width="10" height="3" x="2" y="15" rx=".5" />
+  //           </svg>`,
+  //   content: formItem,
+  // });
+
+  
+  
+  addFormBlock('input-box', {
+    label: '输入框',
+    media: `<svg viewBox="0 0 24 24"><path d="M22 9c0-.6-.5-1-1.3-1H3.4C2.5 8 2 8.4 2 9v6c0 .6.5 1 1.3 1h17.4c.8 0 1.3-.4 1.3-1V9zm-1 6H3V9h18v6z"></path><path d="M4 10h1v4H4z"></path></svg>`,
+    content:
+      {type: 'inputbox'},
+  });
+
+  addFormBlock('textarea', {
+    label: '文本区',
+    media: `<svg viewBox="0 0 24 24"><path d="M22 7.5c0-.9-.5-1.5-1.3-1.5H3.4C2.5 6 2 6.6 2 7.5v9c0 .9.5 1.5 1.3 1.5h17.4c.8 0 1.3-.6 1.3-1.5v-9zM21 17H3V7h18v10z"></path><path d="M4 8h1v4H4zM19 7h1v10h-1zM20 8h1v1h-1zM20 15h1v1h-1z"></path></svg>`,
+    content:
+      {type: 'textarea'},
+  });
+
+  addFormBlock('select', {
+    label: '选择框',
+    media: `<svg viewBox="0 0 24 24"><path d="M22 9c0-.6-.5-1-1.3-1H3.4C2.5 8 2 8.4 2 9v6c0 .6.5 1 1.3 1h17.4c.8 0 1.3-.4 1.3-1V9zm-1 6H3V9h18v6z"></path><path d="M18.5 13l1.5-2h-3zM4 11.5h11v1H4z"></path></svg>`,
+    content:
+      {type: 'select'},
+  });
+  
+  addFormBlock('button', {
+    label: '按钮',
+    media: `<svg viewBox="0 0 24 24">
+        <path fill="currentColor" d="M20 20.5C20 21.3 19.3 22 18.5 22H13C12.6 22 12.3 21.9 12 21.6L8 17.4L8.7 16.6C8.9 16.4 9.2 16.3 9.5 16.3H9.7L12 18V9C12 8.4 12.4 8 13 8S14 8.4 14 9V13.5L15.2 13.6L19.1 15.8C19.6 16 20 16.6 20 17.1V20.5M20 2H4C2.9 2 2 2.9 2 4V12C2 13.1 2.9 14 4 14H8V12H4V4H20V12H18V14H20C21.1 14 22 13.1 22 12V4C22 2.9 21.1 2 20 2Z" />
+    </svg>`,
+    content: {type: 'button'},
+  });
+  
+  addFormBlock('label', {
+    label: '标签',
+    media: `<svg viewBox="0 0 24 24"><path d="M22 11.9c0-.6-.5-.9-1.3-.9H3.4c-.8 0-1.3.3-1.3.9V17c0 .5.5.9 1.3.9h17.4c.8 0 1.3-.4 1.3-.9V12zM21 17H3v-5h18v5z"></path><rect width="14" height="5" x="2" y="5" rx=".5"></rect><path d="M4 13h1v3H4z"></path></svg>`,
+    content: {type: 'label'},
+  });
+
+  addFormBlock('check-box', {
+    label: '单选框',
+    media: `<svg viewBox="0 0 24 24"><path d="M10 17l-5-5 1.41-1.42L10 14.17l7.59-7.59L19 8m0-5H5c-1.11 0-2 .89-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5a2 2 0 0 0-2-2z"></path></svg>`,
+    content:
+      {type: 'checkbox'},
+  });
+
+  addFormBlock('radio', {
+    label: '多选框',
+    media: `<svg viewBox="0 0 24 24"><path d="M12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8m0-18C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m0 5c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"></path></svg>`,
+    content:
+      {type: 'radio'},
+  });
+
+  addExtraBlock('tool-tip', {
+    label: '提示框',
+    media: `<svg viewBox="0 0 24 24">
+          <path d="M4 2h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2h-4l-4 4-4-4H4c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2m0 2v12h4.83L12 19.17 15.17 16H20V4H4z"></path>
+        </svg>`,
+    content: `<div data-gjs-highlightable="true" data-gjs-type="tooltip" draggable="true" data-tooltip="Tooltip"></div>`,
+  });
+
+  addExtraBlock('map', {
+    label: '地图',
+    media: `<svg viewBox="0 0 24 24">
+        <path fill="currentColor" d="M20.5,3L20.34,3.03L15,5.1L9,3L3.36,4.9C3.15,4.97 3,5.15 3,5.38V20.5A0.5,0.5 0 0,0 3.5,21L3.66,20.97L9,18.9L15,21L20.64,19.1C20.85,19.03 21,18.85 21,18.62V3.5A0.5,0.5 0 0,0 20.5,3M10,5.47L14,6.87V18.53L10,17.13V5.47M5,6.46L8,5.45V17.15L5,18.31V6.46M19,17.54L16,18.55V6.86L19,5.7V17.54Z"></path>
+      </svg>`,
+    content:
+      {type: 'map',}
+  });
+
+  addExtraBlock('tabs', {
+    label: ' 标签页',
+    media: `<svg viewBox="0 0 24 24">
+        <path fill="currentColor" d="M20.5,3L20.34,3.03L15,5.1L9,3L3.36,4.9C3.15,4.97 3,5.15 3,5.38V20.5A0.5,0.5 0 0,0 3.5,21L3.66,20.97L9,18.9L15,21L20.64,19.1C20.85,19.03 21,18.85 21,18.62V3.5A0.5,0.5 0 0,0 20.5,3M10,5.47L14,6.87V18.53L10,17.13V5.47M5,6.46L8,5.45V17.15L5,18.31V6.46M19,17.54L16,18.55V6.86L19,5.7V17.54Z"></path>
+      </svg>`,
+    content:
+      {type: 'tabs',}
+  });
+  
 };
