@@ -114,6 +114,65 @@ export default (editor: grapesjs.Editor) => {
       },
     },
   });
+  editor.DomComponents.addType('select', {
+    isComponent: el => el.tagName == 'SELECT',
+    model: {
+      defaults: {
+        // component
+        traits() {
+          const result = [];
+              result.push(
+                {
+                  type: 'text',
+                  name: 'id',
+                  label: 'ID',
+                },
+                {
+                  type: 'text',
+                  name: 'name',
+                  label: '名称',
+                },
+                {
+                  type: 'number',
+                  name: 'option',
+                  label: '选项个数',
+                  default: 2,
+                },)
+          return result;
+        },
+        attributes: { type: 'text', required: true },
+      },
+    },
+  });
+  editor.DomComponents.addType('button', {
+    isComponent: el => el.tagName == 'BUTTON',
+    model: {
+      defaults: {
+        traits: [
+          {
+            type: 'text',
+            name: 'id',
+            label: 'ID',
+          },
+          {
+            type: 'text',
+            name: 'name',
+            label: '名称',
+          },
+          {
+            type: 'select', // Type of the trait
+            label: '类型', // The label you will see in Settings
+            name: 'type', // The name of the attribute/property to use on component
+            options: [
+              { id: 'button', name: '按钮'},
+              { id: 'reset', name: '重置'},
+              { id: 'submit', name: '提交'},
+            ]
+          }],
+        attributes: { type: 'text', required: true },
+      },
+    },
+  });
   editor.DomComponents.addType('checkbox', {
     isComponent: el => el.tagName == 'CHECKBOX',
     model: {
@@ -134,32 +193,31 @@ export default (editor: grapesjs.Editor) => {
       },
     },
   });
-  // editor.DomComponents.addType('path', {
-  //   isComponent: el => el.tagName == 'PATH',
-  //   model: {
-  //     defaults: {
-  //       traits: [
-  //         {
-  //           type: 'text',
-  //           name: 'id',
-  //           label: 'ID',
-  //           placeholder: '输入文字',
-  //         },
-  //         {
-  //           type: 'text',
-  //           name: 'title',
-  //           label: '名称',
-  //           placeholder: '输入文字',
-  //         },
-  //         {
-  //           type: 'text',
-  //           name: 'd',
-  //           label: 'path路径',
-  //           default: 'M4 2h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2h-4l-4 4-4-4H4c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2m0 2v12h4.83L12 19.17 15.17 16H20V4H4z',
-  //           placeholder: 'svg path',
-  //         }],
-  //       attributes: { type: 'text', required: true },
-  //     },
-  //   },
-  // });
+  editor.DomComponents.addType('path', {
+    isComponent: el => el.tagName == 'PATH',
+    model: {
+      defaults: {
+        traits: [
+          {
+            type: 'text',
+            name: 'id',
+            label: 'ID',
+            placeholder: '输入文字',
+          },
+          {
+            type: 'text',
+            name: 'title',
+            label: '名称',
+            placeholder: '输入文字',
+          },
+          {
+            type: 'text',
+            name: 'd',
+            label: 'path路径',
+            placeholder: 'svg path',
+          }],
+        attributes: { type: 'text', required: true },
+      },
+    },
+  });
 }

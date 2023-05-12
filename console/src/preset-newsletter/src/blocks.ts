@@ -313,21 +313,20 @@ export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) 
     label: '输入框',
     media: `<svg viewBox="0 0 24 24"><path d="M22 9c0-.6-.5-1-1.3-1H3.4C2.5 8 2 8.4 2 9v6c0 .6.5 1 1.3 1h17.4c.8 0 1.3-.4 1.3-1V9zm-1 6H3V9h18v6z"></path><path d="M4 10h1v4H4z"></path></svg>`,
     content:
-      {type: 'inputbox'},
+      `<input type="text" />`,
   });
 
   addFormBlock('text-area', {
     label: '文本区',
     media: `<svg viewBox="0 0 24 24"><path d="M22 7.5c0-.9-.5-1.5-1.3-1.5H3.4C2.5 6 2 6.6 2 7.5v9c0 .9.5 1.5 1.3 1.5h17.4c.8 0 1.3-.6 1.3-1.5v-9zM21 17H3V7h18v10z"></path><path d="M4 8h1v4H4zM19 7h1v10h-1zM20 8h1v1h-1zM20 15h1v1h-1z"></path></svg>`,
-    content:
-      {type: 'textarea'},
+    content: `<textarea></textarea>`,
   });
 
   addFormBlock('select', {
     label: '选择框',
     media: `<svg viewBox="0 0 24 24"><path d="M22 9c0-.6-.5-1-1.3-1H3.4C2.5 8 2 8.4 2 9v6c0 .6.5 1 1.3 1h17.4c.8 0 1.3-.4 1.3-1V9zm-1 6H3V9h18v6z"></path><path d="M18.5 13l1.5-2h-3zM4 11.5h11v1H4z"></path></svg>`,
     content:
-      {type: 'select'},
+      `<select type="text"><option value="opt1">选项 1</option><option value="opt2">选项 2</option></select>`,
   });
   
   addFormBlock('button', {
@@ -335,35 +334,33 @@ export default function(editor: grapesjs.Editor, opts: Required<PluginOptions>) 
     media: `<svg viewBox="0 0 24 24">
         <path fill="currentColor" d="M20 20.5C20 21.3 19.3 22 18.5 22H13C12.6 22 12.3 21.9 12 21.6L8 17.4L8.7 16.6C8.9 16.4 9.2 16.3 9.5 16.3H9.7L12 18V9C12 8.4 12.4 8 13 8S14 8.4 14 9V13.5L15.2 13.6L19.1 15.8C19.6 16 20 16.6 20 17.1V20.5M20 2H4C2.9 2 2 2.9 2 4V12C2 13.1 2.9 14 4 14H8V12H4V4H20V12H18V14H20C21.1 14 22 13.1 22 12V4C22 2.9 21.1 2 20 2Z" />
     </svg>`,
-    content: {type: 'button'},
+    content:  `<button class="button">按钮</button>`,
   });
   
   addFormBlock('label', {
     label: '标签',
     media: `<svg viewBox="0 0 24 24"><path d="M22 11.9c0-.6-.5-.9-1.3-.9H3.4c-.8 0-1.3.3-1.3.9V17c0 .5.5.9 1.3.9h17.4c.8 0 1.3-.4 1.3-.9V12zM21 17H3v-5h18v5z"></path><rect width="14" height="5" x="2" y="5" rx=".5"></rect><path d="M4 13h1v3H4z"></path></svg>`,
-    content: {type: 'label'},
+    content: `<label>标签</label>`,
   });
 
   addFormBlock('check-box', {
     label: '单选框',
     media: `<svg viewBox="0 0 24 24"><path d="M10 17l-5-5 1.41-1.42L10 14.17l7.59-7.59L19 8m0-5H5c-1.11 0-2 .89-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5a2 2 0 0 0-2-2z"></path></svg>`,
     content:
-      {type: 'checkbox'},
+      `<input type="checkbox" />`,
   });
 
   addFormBlock('radio', {
     label: '多选框',
     media: `<svg viewBox="0 0 24 24"><path d="M12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8m0-18C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m0 5c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"></path></svg>`,
     content:
-      {type: 'radio'},
+      `<input type="radio" />`,
   });
 
-  // addExtraBlock('tool-tip', {
-  //   label: '提示框',
-  //   media: `<svg viewBox="0 0 24 24">
-  //         <path d="M4 2h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2h-4l-4 4-4-4H4c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2m0 2v12h4.83L12 19.17 15.17 16H20V4H4z"></path>
-  //       </svg>`,
-  //   content: `<div data-gjs-highlightable="true" data-gjs-type="tooltip" draggable="true" data-tooltip="Tooltip"></div>`,
+  // addExtraBlock('svg', {
+  //   label: 'svg图标',
+  //   media: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><path d="M212.3 44l2.3 49.6h-6A60 60 0 00204 75c-3.2-6-7.5-10.5-12.9-13.3a44.9 44.9 0 00-21.1-4.3h-29.8V219c0 13 1.4 21 4.2 24.3 4 4.4 10 6.6 18.2 6.6h7.4v5.7H80.2V250h7.5c9 0 15.3-2.7 19-8.2 2.4-3.3 3.5-10.9 3.5-22.7V57.3H84.8a71 71 0 00-21.1 2.2 29 29 0 00-13.9 11.3 46.1 46.1 0 00-6.9 22.8H37L39.5 44h172.8zM245 22h18v256h-18z"></path></svg>`,
+  //   content: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><path d="M212.3 44l2.3 49.6h-6A60 60 0 00204 75c-3.2-6-7.5-10.5-12.9-13.3a44.9 44.9 0 00-21.1-4.3h-29.8V219c0 13 1.4 21 4.2 24.3 4 4.4 10 6.6 18.2 6.6h7.4v5.7H80.2V250h7.5c9 0 15.3-2.7 19-8.2 2.4-3.3 3.5-10.9 3.5-22.7V57.3H84.8a71 71 0 00-21.1 2.2 29 29 0 00-13.9 11.3 46.1 46.1 0 00-6.9 22.8H37L39.5 44h172.8zM245 22h18v256h-18z"></path></svg>`,
   // });
 
   addExtraBlock('map', {

@@ -1,6 +1,6 @@
 // @ts-ignore
 import juice from 'juice';
-import loadComponents from './components'
+// import loadComponents from './components'
 import loadCommands from './commands';
 import loadBlocks from './blocks';
 import loadPanels from './panels';
@@ -208,7 +208,7 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts: Partial<PluginOpti
     document.head.appendChild(style);
   }
 
-  loadComponents(editor);
+  // loadComponents(editor);
   loadCommands(editor, options);
   loadBlocks(editor, options);
   loadPanels(editor, options);
