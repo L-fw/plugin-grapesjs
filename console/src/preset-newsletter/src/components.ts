@@ -16,8 +16,7 @@ export default (editor: grapesjs.Editor) => {
   editor.Components.addType('textarea', {
     model: {
       defaults: {
-        content:
-          `<textarea></textarea>`,
+        content: `<textarea></textarea>`,
       }
     }
   });

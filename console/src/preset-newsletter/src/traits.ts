@@ -10,7 +10,7 @@ export default (editor: grapesjs.Editor) => {
         traits(component: any) {
           const result = [];
           // Example of some logic
-          console.log(component.get('type'));
+          console.log(component.get('attributes'));
           if (component.get('type') == 'input') {
             result.push(
               {
@@ -27,6 +27,7 @@ export default (editor: grapesjs.Editor) => {
                 type: 'text',
                 name: 'placeholder',
                 label: '提示',
+                default: '请输入..',
               },
               {
                 type: 'select', // Type of the trait
@@ -79,6 +80,36 @@ export default (editor: grapesjs.Editor) => {
         
         // As by default, traits are binded to attributes, so to define
         // their initial value we can use attributes
+        attributes: { type: 'text', required: true },
+      },
+    },
+  });
+  editor.DomComponents.addType('textarea', {
+    isComponent: el => el.tagName == 'TEXTAREA',
+    model: {
+      defaults: {
+        traits: [
+          {
+            type: 'text',
+            name: 'id',
+            label: 'ID',
+          },
+          {
+            type: 'text',
+            name: 'name',
+            label: '名称',
+          },
+          {
+            type: 'text',
+            name: 'placeholder',
+            label: '提示',
+            default: '请输入..',
+          },
+          {
+            type: 'checkbox',
+            name: 'required',
+            label: '必填',
+          }],
         attributes: { type: 'text', required: true },
       },
     },

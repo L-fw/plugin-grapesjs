@@ -140,7 +140,7 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opts: Partial<PluginOpti
   let config = editor.getConfig();
 
   const options: RequiredPluginOptions = {
-    blocks: ['sect100', 'sect50', 'sect30', 'sect37', 'divider', 'text', 'text-sect', 'image', 'video', 'quote', 'link', 'link-block', 'grid-items', 'list-items','tool-tip', 'input-box', 'textarea', 'select', 'button', 'label', 'check-box', 'radio', 'map', 'tabs'],
+    blocks: ['sect100', 'sect50', 'sect30', 'sect37', 'divider', 'text', 'text-sect', 'image', 'video', 'quote', 'link', 'link-block', 'grid-items', 'list-items', 'input-box', 'text-area', 'select', 'button', 'label', 'check-box', 'radio', 'map'],
     block: () => ({}),
     juiceOpts: {},
     cmdOpenImport: 'gjs-open-import-template',
